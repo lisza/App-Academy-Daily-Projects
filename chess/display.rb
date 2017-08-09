@@ -13,12 +13,17 @@ class Display
     @board.grid.each_with_index do |row, i|
       row.each_with_index do |tile, j|
         at_cursor = [i,j] == @cursor.cursor_pos
-        if tile.is_a?(Piece)
-          at_cursor ? to_print = "P ".colorize(:green) : to_print = "P "
+
+        if at_cursor
+          if @cursor.selected
+            print tile.symbol.to_s.colorize(:red) + " "
+          else
+            print tile.symbol.to_s.colorize(:green) + " "
+          end
         else
-          at_cursor ? to_print = "# ".colorize(:green) : to_print =  "# "
+          print tile.symbol.to_s + " "
         end
-        print to_print
+
       end
       puts
     end
@@ -28,6 +33,7 @@ class Display
   def move_cursor
     self.render
     @cursor.get_input
+    system("clear")
   end
 end
 
