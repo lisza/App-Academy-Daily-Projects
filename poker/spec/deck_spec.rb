@@ -15,7 +15,7 @@ describe 'Deck' do
   it "contains four of a kind" do
 
     four_kings = deck.cards.select do |card|
-      card.face == :king
+      card.face == 12
     end
 
     expect(four_kings.length).to eq(4)
