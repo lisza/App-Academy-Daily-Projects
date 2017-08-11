@@ -1,23 +1,3 @@
-###### Not working ##########
-def permutations_review(arr)
-  return arr if arr.length == 1
-  final = []
-
-  el = arr[0]
-
-  perms = permutations_review(arr[1..-1])
-
-  perms.each do |sub_ary|
-    (0...arr.length).each do |i|
-      perms << arr[0..i] + el + arr[i..-1]
-    end
-  end
-
-  perms
-end
-############################
-
-
 def first_anagram?(str1, str2)
   # time complexity O(n! + n)
   # space complexity O(n!)
